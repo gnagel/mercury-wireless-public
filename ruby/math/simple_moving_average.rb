@@ -41,9 +41,9 @@ module Math
       end
 
       # Is the array larger than the range?
-      if (length > @range) {
+      if (length > @range)
         @sum -= @values.shift.to_f();
-      }
+      end
       
       # Compute the average
       return @sum.to_f / @range.to_f;
