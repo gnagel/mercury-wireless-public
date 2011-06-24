@@ -17,6 +17,8 @@ module Math
     #   array of values used as temporary storage
     ###
     def initialize(range)
+      raise ArgumentError, "Range is nil" unless (range);
+      raise ArgumentError, "Range must be >= 1" unless range.to_i >= 1;
       @range = range.to_i;
       @sum = 0;
       @values = Array.new();
@@ -28,6 +30,8 @@ module Math
     # Otherwise compute the SMA and return the value.
     ###
     def add(value) 
+      raise ArgumentError, "Value is nil" unless (value);
+      
       # add the value to the end of the array.
       @values.push(value);
       
