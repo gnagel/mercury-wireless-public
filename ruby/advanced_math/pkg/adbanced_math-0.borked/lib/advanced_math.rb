@@ -1,12 +1,11 @@
-# Simple Moving Average (SMA) calculator
-# Created: 2011-06-24
-# Author:  G Nagel
-# Company: Mercury Wireless Software LLC
 
-module Math
+module AdvancedMath
 
+  # Simple Moving Average (SMA) calculator
+  # Created: 2011-06-24
+  # Author:  G Nagel
+  # Company: Mercury Wireless Software LLC
   class SimpleMovingAverage
-    
     ###
     # Initialize the members: 
     # range: 
@@ -39,19 +38,20 @@ module Math
       @sum += value.to_f;
 
       # Is the array less than the range?
-      length = @values.length;
-      if (length < @range) 
-        return nil;
-      end
+      return nil if (@values.length() < @range)
 
       # Is the array larger than the range?
-      if (length > @range)
-        @sum -= @values.shift.to_f();
-      end
+      @sum -= @values.shift.to_f() if (@values.length() > @range)
       
       # Compute the average
       return @sum.to_f / @range.to_f;
     end
+  end
+
+  ###
+  # SMA is just an alias to SimpleMovingAverage
+  ###  
+  class SMA < SimpleMovingAverage
   end
   
 end

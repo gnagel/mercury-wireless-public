@@ -1,0 +1,13 @@
+advanced_math.gemspec
+History.txt
+lib/advanced_math.rb
+Manifest.txt
+pkg/adbanced_math-0.borked
+pkg/adbanced_math-0.borked/advanced_math.gemspec
+pkg/adbanced_math-0.borked/lib/advanced_math.rb
+pkg/adbanced_math-0.borked/Manifest.txt
+pkg/adbanced_math-0.borked/test/test_simple_moving_average.rb
+pkg/adbanced_math-0.borked.gem
+pkg/adbanced_math-0.borked.tgz
+README.rdoc
+test/test_simple_moving_average.rb
