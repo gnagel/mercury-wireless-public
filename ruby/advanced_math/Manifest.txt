@@ -1,6 +1,5 @@
-advanced_math-0.0.4.gem
-advanced_math-0.0.5.gem
 advanced_math.gemspec
+gem_publish.sh
 History.txt
 lib/advanced_math/rsi.rb
 lib/advanced_math/sma.rb
