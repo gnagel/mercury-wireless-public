@@ -9,5 +9,6 @@ lib/advanced_math.rb
 Manifest.txt
 PostInstall.txt
 README.rdoc
+test/rsi.pl
 test/test_rsi.rb
 test/test_simple_moving_average.rb

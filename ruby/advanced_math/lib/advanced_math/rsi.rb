@@ -9,9 +9,11 @@ module AdvancedMath
   # Company: Mercury Wireless Software LLC
   # Source: http://en.wikipedia.org/wiki/Relative_Strength_Index#Cutler.27s_RSI
   # Source: http://www.aspenres.com/Documents/AspenGraphics4.0/Aspen_Graphics_4.htm#CutlersRSI.htm
+  # Source: http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:relative_strength_index_rsi
   ###
   class RelativeStrengthIndex
     attr_accessor :values_up, :values_down, :range, :last_value
+    attr_accessor :verbose
     
     ###
     # Initialize the members 
@@ -20,6 +22,7 @@ module AdvancedMath
       raise ArgumentError, "Range is nil" unless (range)
       raise ArgumentError, "Range must be > 1" unless range.to_i > 1
 
+      @verbose = false
       @values_up = []
       @values_down = []
       @range = range.to_i()
@@ -33,12 +36,12 @@ module AdvancedMath
     ###
     def add(value) 
       raise ArgumentError, "Value is nil" unless (value)
-      puts "=================="
-      puts "value = #{value}"
+      puts "==================" if verbose()
+      puts "value = #{value}" if verbose()
       
       if (nil == @last_value)
         @last_value = value.to_f()
-        puts "Setting intial last_value = #{@last_value}"
+        puts "Setting intial last_value = #{@last_value}" if verbose()
         return nil
       end
       
@@ -57,18 +60,18 @@ module AdvancedMath
         @values_up << 0
         @values_down << 0
       end
-      puts "diff = #{diff}, values_up = #{@values_up.inspect()}, values_down = #{@values_down.inspect()}"
+      puts "diff = #{diff}, values_up = #{@values_up.inspect()}, values_down = #{@values_down.inspect()}" if verbose()
       
       if (@values_up.length() < range())
-        puts "#{@values_up.length()} < #{range()}"
+        puts "#{@values_up.length()} < #{range()}" if verbose()
         return nil 
       end
       if (@values_up.length() > range())
-        puts "#{@values_up.length()} > #{range()}"
+        puts "#{@values_up.length()} > #{range()}" if verbose()
         @values_up.shift()
         @values_down.shift()
       else
-        puts "#{@values_up.length()} == #{range()}"
+        puts "#{@values_up.length()} == #{range()}" if verbose()
       end
 
       sum = {:up => 0, :down => 0, :i_up => 0, :i_down => 0}
@@ -76,10 +79,10 @@ module AdvancedMath
       @values_down.each() { |value| sum[:down] = sum[:down] + value }
       
       rs = (0 == sum[:down]) ? 100.0 : (sum[:up] / sum[:down])
-      puts "rs = #{rs}"
+      puts "rs = #{rs}" if verbose()
       
       rsi = 100.0 - (100.0 / (1.0 + rs))
-      puts "rsi = #{rsi}"
+      puts "rsi = #{rsi}" if verbose()
       return rsi
     end
     

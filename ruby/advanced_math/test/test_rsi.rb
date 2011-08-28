@@ -60,6 +60,19 @@ module AdvancedMath
         end
       end
     end
+    
+    def self.rsi_values(period, values)
+        cmd = "#{File.dirname(__FILE__)}/rsi.pl #{period} #{values.join(" ")}"
+        cmd = `#{cmd}`.strip()
+        return cmd.to_i()
+    end
+    
+    def self.rsi_range(period, prefix, range)
+      values = []
+      prefix.each() { |i| values << i }
+      range.each() { |i| values << i }
+      return self.rsi_values(period, values)
+    end
 
     # Verify SMA of 2, always returns the same value - 0.5
     def test_sma_add_2
@@ -68,8 +81,10 @@ module AdvancedMath
       assert_equal(nil, sma.add(0))
       assert_equal(99, sma.add(0).to_i())
       (1...1000).each do |i|
-        value = sma.add(i)
-        assert_equal(99, sma.add(i).to_i(), "#{i}")
+        value = sma.add(i).to_i()
+        cmp = self.rsi_range(sma.range(), [0, 0, 0], Range.new(0, i+1))
+        assert_equal(cmp, value, "#{i}")
+        assert_equal(99, value, "#{i}")
       end
 
     # (0..1000).to_a().each() do |i|
