@@ -10,14 +10,11 @@ require 'rubygems'
 
 gem 'hoe', '>= 2.1.0'
 require 'hoe'
-require 'fileutils'
 require File.dirname(__FILE__) + "/lib/advanced_math.rb"
 
 
-Hoe.plugin :newgem
-# Hoe.plugin :website
-# Hoe.plugin :cucumberfeatures
-$hoe = Hoe.spec 'adbanced_math' do |p|
+Hoe.plugin :newgem # Hoe.plugin :website # Hoe.plugin :cucumberfeatures
+$hoe = Hoe.spec 'advanced_math' do |p|
   p.developer('Glenn Nagel', 'glenn@mercury-wireless.com')
   p.remote_rdoc_dir = '' # Release to root only one project
   p.post_install_message = 'PostInstall.txt'
@@ -38,4 +35,4 @@ end
 require 'newgem/tasks'
 Dir['tasks/**/*.rake'].each { |t| load t }
 remove_task :default
-task :default => [:test]
+task :default => [:generate, :test]
