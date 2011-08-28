@@ -1,0 +1,4 @@
+=== 0.0.5 2011-08-28
+
+* 1 major enhancement:
+  * Cleaned up SMA and added tests

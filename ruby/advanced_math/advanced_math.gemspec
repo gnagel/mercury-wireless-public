@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'advanced_math'
-  s.version     = '0.0.4'
-  s.date        = '2011-08-25'
+  s.version     = Time.now().strftime("%Y.%m.%d")
+  s.date        = Time.now().strftime("%Y-%m-%d")
   s.summary     = "A simple gem for advanced and financial math calcualtions."
   s.description = "A simple gem for advanced and financial math calcualtions."
   s.authors     = ["G Nagel"]

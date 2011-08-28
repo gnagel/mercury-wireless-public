@@ -1,5 +1,7 @@
 
 module AdvancedMath
+  VERSION = '0.0.5'
+
 
   # Simple Moving Average (SMA) calculator
   # Created: 2011-06-24
