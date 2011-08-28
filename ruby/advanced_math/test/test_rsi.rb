@@ -60,18 +60,18 @@ module AdvancedMath
         end
       end
     end
-    
-    def self.rsi_values(period, values)
-        cmd = "#{File.dirname(__FILE__)}/rsi.pl #{period} #{values.join(" ")}"
-        cmd = `#{cmd}`.strip()
-        return cmd.to_i()
+
+    def RelativeStrengthIndexTest.rsi_values(period, values)
+      cmd = "#{File.dirname(__FILE__)}/rsi.pl #{period} #{values.join(" ")}"
+      cmd = `#{cmd}`.strip()
+      return cmd.to_i()
     end
-    
-    def self.rsi_range(period, prefix, range)
+
+    def RelativeStrengthIndexTest.rsi_range(period, prefix, range)
       values = []
       prefix.each() { |i| values << i }
       range.each() { |i| values << i }
-      return self.rsi_values(period, values)
+      return RelativeStrengthIndexTest.rsi_values(period, values)
     end
 
     # Verify SMA of 2, always returns the same value - 0.5
@@ -82,7 +82,7 @@ module AdvancedMath
       assert_equal(99, sma.add(0).to_i())
       (1...1000).each do |i|
         value = sma.add(i).to_i()
-        cmp = self.rsi_range(sma.range(), [0, 0, 0], Range.new(0, i+1))
+        cmp = RelativeStrengthIndexTest.rsi_range(sma.range(), [0, 0, 0], Range.new(0, i+1))
         assert_equal(cmp, value, "#{i}")
         assert_equal(99, value, "#{i}")
       end
@@ -112,23 +112,16 @@ module AdvancedMath
 
       values = RelativeStrengthIndex.new(2).add_array((0..1000).to_a)
       assert_nil(values[0])
-      1.upto(values.length() -1) do |i|
+      assert_nil(values[1])
+      2.upto(values.length() -1) do |i|
         assert_not_nil(values[i])
-        assert_equal(i - 0.5, values[i])
+        assert_equal(99, values[i].to_i())
       end
 
       values = RelativeStrengthIndex.new(14).add_array((0..14000).to_a)
-      0.upto(12) { |i| assert_nil(values[i], "#{i}") }
+      values.slice!(0, 14).each() { |value| assert_nil(value) }
 
-      13.upto(values.length() -1) do |i|
-        assert_not_nil(values[i], "#{i}")
-
-        sum = 0.0
-        Range.new(i-13, i).each() { |value| sum = sum + value.to_f}
-        sum = sum / 14
-
-        assert_equal(sum, values[i], "#{i}")
-      end
+      values.each() { |value| assert_not_nil(value); assert_equal(99, value.to_i()) }
     end
   end
 end
