@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/toggle_button_background_9">
+	<LinearLayout
+		style="@style/SlidingHorizontalButton.LinearLayout" android:layout_gravity="center" android:gravity="center">
+		<TextView
+			style="@style/SlidingHorizontalButton.Label"
+			android:id="@id/SlidingHorizontalButton.Label.TextOn"
+			android:text="@string/SlidingHorizontalButton.Label.TextOn" android:layout_height="wrap_content"/>
+		<TextView
+			style="@style/SlidingHorizontalButton.Label"
+			android:id="@id/SlidingHorizontalButton.Label.TextOff"
+			android:text="@string/SlidingHorizontalButton.Label.TextOff" android:layout_height="wrap_content"/>
+	</LinearLayout>
+	<LinearLayout
+		style="@style/SlidingHorizontalButton.LinearLayout"
+		android:id="@id/SlidingHorizontalButton.Toggle.Container">
+		<ImageButton
+			android:background="@drawable/toggle_button_center_9"
+			android:layout_weight="1"
+			android:scaleType="fitXY"
+			android:layout_width="0dip"
+			android:id="@id/SlidingHorizontalButton.Toggle.Button"
+			android:layout_gravity="center" android:layout_height="wrap_content"/>
+	</LinearLayout>
+</FrameLayout>

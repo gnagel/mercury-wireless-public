@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<style
-		name="Theme"
-		parent="@android:style/Theme">
-		<item name="buttonStyleToggle">@style/Widget.Button.Toggle</item>
-	</style>
-</resources>
