@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- 	<style -->
+<!-- 		name="Widget.Button.Toggle"> -->
+<!-- 		<item -->
+<!-- 			name="android:background">@android:drawable/btn_toggle_bg</item> -->
+<!-- 		<item -->
+<!-- 			name="android:textOn">@string/capital_on</item> -->
+<!-- 		<item -->
+<!-- 			name="android:textOff">@string/capital_off</item> -->
+<!-- 	</style> -->
+</resources>
