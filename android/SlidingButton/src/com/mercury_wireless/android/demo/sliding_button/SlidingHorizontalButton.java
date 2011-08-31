@@ -2,120 +2,214 @@ package com.mercury_wireless.android.demo.sliding_button;
 
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
-import android.widget.ViewFlipper;
+import android.widget.TextView;
 
 
-public class SlidingHorizontalButton extends LinearLayout implements View.OnClickListener {
-
-	private ViewFlipper	viewFlipper;
-
-	private View		viewLeft;
-
-	private View		viewRight;
-
-	private View		view;
-
-	private boolean		checked	= true;
-
-
-	public SlidingHorizontalButton(final Context context) {
-		super(context);
-
-		addView(root(context), new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.FILL_PARENT,
-				android.view.ViewGroup.LayoutParams.FILL_PARENT));
+/**
+ * A horizontal checkbox button that slides from left to right & right to left.
+ * 
+ * @author G Nagel
+ */
+public final class SlidingHorizontalButton extends LinearLayout implements View.OnClickListener {
+	/**
+	 * Interface definition for a callback to be invoked when the checked_value
+	 * state of a sliding button changed.
+	 * 
+	 * @author G Nagel
+	 */
+	public static interface OnCheckedChangeListener {
+		/**
+		 * Called when the checked_value state of a compound button has changed.
+		 * 
+		 * @param buttonView
+		 * @param isChecked
+		 */
+		abstract void onCheckedChanged(SlidingHorizontalButton buttonView, boolean isChecked);
 	}
 
 
+	// Animation factory for the UI
+	private AnimationFactory		animation;
+
+	// Checked State checked_listener
+	private OnCheckedChangeListener	checked_listener	= null;
+
+	// Current checked_value state
+	private boolean					checked_value		= true;
+
+	// "On" / "Off" labels
+	private final TextView			labelOn, labelOff;
+
+	// The button that is toggeled
+	private final View				toggle_button;
+
+	// Container for the button
+	private final LinearLayout		toggle_container;
+
+
+	/**
+	 * Construct a new instance of the {@link SlidingHorizontalButton} with the
+	 * default styles.
+	 */
+	public SlidingHorizontalButton(final Context context) {
+		this(context, null);
+	}
+
+
+	/**
+	 * Construct a new instance of the {@link SlidingHorizontalButton} with the
+	 * given style attributes.
+	 */
 	public SlidingHorizontalButton(final Context context, final AttributeSet attrs) {
 		super(context, attrs);
 
-		addView(root(context), new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.FILL_PARENT,
+		/**
+		 * Setup the UI
+		 */
+		final View root = View.inflate(context, R.layout.toggle_button, null);
+
+		// Find the container and wire it up
+		toggle_container = (LinearLayout) root.findViewById(R.id.SlidingHorizontalButton_Toggle_Container);
+		toggle_container.setOnClickListener(this);
+
+		// Find the button and wire it up
+		toggle_button = root.findViewById(R.id.SlidingHorizontalButton_Toggle_Button);
+		toggle_button.setOnClickListener(this);
+
+		// Find the labels
+		labelOn = (TextView) root.findViewById(R.id.SlidingHorizontalButton_Label_TextOn);
+		labelOff = (TextView) root.findViewById(R.id.SlidingHorizontalButton_Label_TextOff);
+
+		// Setup the animation callback
+		animation = new AnimationFactoryNormal(toggle_button);
+
+		// Add the layout to the container
+		addView(root, new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.FILL_PARENT,
 				android.view.ViewGroup.LayoutParams.FILL_PARENT));
-	}
 
+		// If no attributes were passed in, then abort now
+		if (null == attrs) {
+			return;
+		}
 
-	@Override
-	public void onClick(final View v) {
-		final int id = v.getId();
-		final Context context = getContext();
+		/**
+		 * Parse the attributes and apply the values to the UI
+		 */
+		final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidingHorizontalButton);
 
-		switch (id) {
-			case R.id.container_off:
-			case R.id.button_off:
-				viewFlipper.setInAnimation(context, R.anim.toggle_button_transition_in_right);
-				viewFlipper.setOutAnimation(context, R.anim.toggle_button_transition_out_right);
-				viewFlipper.showNext();
-				break;
+		// Set the "On" text
+		final Object valueOn = typedArray.getString(R.styleable.SlidingHorizontalButton_textOn);
+		if (null != valueOn) {
+			labelOn.setText(valueOn.toString());
+		}
 
-			case R.id.container_on:
-			case R.id.button_on:
-				viewFlipper.setInAnimation(context, R.anim.toggle_button_transition_in_left);
-				viewFlipper.setOutAnimation(context, R.anim.toggle_button_transition_out_left);
-				viewFlipper.showPrevious();
-				break;
+		// Set the "Off" text
+		final Object valueOff = typedArray.getString(R.styleable.SlidingHorizontalButton_textOff);
+		if (null != valueOff) {
+			labelOff.setText(valueOff.toString());
+		}
 
-			case R.id.container:
-			case R.id.button:
-				// final View view = (View) this.view.getParent();
-
-				// Find the center of image
-				final float centerX = view.getWidth() / 2.0f;
-				final float centerY = view.getHeight() / 2.0f;
-
-				// Create a new 3D rotation with the supplied parameter
-				// The animation listener is used to trigger the next animation
-				final android.view.animation.TranslateAnimation rotation = checked ? new TranslateAnimation(0F,
-						-view.getWidth(), 0F, 0F) : new TranslateAnimation(-view.getWidth(), 0F, 0F, 0F);
-
-				// final SlidingButtonAnimation rotation = new
-				// SlidingButtonAnimation(start, end, centerX, centerY);
-				rotation.setDuration(200);
-				rotation.setFillAfter(true);
-				rotation.setInterpolator(new AccelerateInterpolator());
-				// rotation.setAnimationListener(new
-				// DisplayNextView(isFirstImage,
-				// image1, image2));
-
-				view.startAnimation(rotation);
-
-				// SlidingButtonAnimation.rotate(view, 0, -180);
-
-				checked = !checked;
-
-				// view.startAnimation(AnimationUtils.loadAnimation(context,
-				// R.anim.toggle_button_rotate));
+		// Set the "checked_value" value
+		final boolean valueChecked = typedArray.getBoolean(R.styleable.SlidingHorizontalButton_checked, checked_value);
+		if (valueChecked != checked_value) {
+			animation = new AnimationFactoryReversed(toggle_button);
+			toggle_container.setGravity(Gravity.LEFT);
+			checked_value = valueChecked;
 		}
 	}
 
 
-	private View root(final Context context) {
-		final View root = inflate(context, R.layout.toggle_button, null);
+	/**
+	 * Get the checked_value state.
+	 */
+	public final boolean isChecked() {
+		return checked_value;
+	}
 
-		viewFlipper = (ViewFlipper) root.findViewById(R.id.view_flipper);
 
-		View container = null;
+	/**
+	 * Perform the click event for the given id
+	 */
+	@Override
+	public final void onClick(View view) {
+		// Just in case someone does something stupid ...
+		if (null == view) {
+			view = toggle_button;
+		}
 
-		container = viewFlipper.findViewById(R.id.container_off);
-		container.setOnClickListener(this);
-		viewLeft = container.findViewById(R.id.button_off);
-		viewLeft.setOnClickListener(this);
+		// Get the id of the view
+		final int id = view.getId();
 
-		container = viewFlipper.findViewById(R.id.container_on);
-		container.setOnClickListener(this);
-		viewRight = container.findViewById(R.id.button_on);
-		viewRight.setOnClickListener(this);
+		// If the ID matches the container or the button then toggle the view
+		switch (id) {
+			case R.id.SlidingHorizontalButton_Toggle_Container:
+			case R.id.SlidingHorizontalButton_Toggle_Button:
+				// Get the animation for the view
+				final TranslateAnimation rotation = checked_value ? animation.getAnimationUncheck() : animation
+						.getAnimationCheck();
+				rotation.setDuration(150);
+				rotation.setFillAfter(true);
+				rotation.setInterpolator(new AccelerateInterpolator());
+				toggle_button.startAnimation(rotation);
 
-		container = root.findViewById(R.id.container);
-		container.setOnClickListener(this);
+				// Toggle the checked_value state
+				checked_value = !checked_value;
 
-		view = container.findViewById(R.id.button);
-		view.setOnClickListener(this);
+				Log.w("", checked_value ? "Checked!" : "UnChecked!");
 
-		return root;
+				// Fire the checked_value checked_listener
+				if (null != checked_listener) {
+					checked_listener.onCheckedChanged(this, checked_value);
+				}
+		}
+	}
+
+
+	/**
+	 * Call this view's OnClickListener, if it is defined.
+	 */
+	@Override
+	public final boolean performClick() {
+		return toggle_button.performClick();
+	}
+
+
+	/**
+	 * Changes the checked_value state of this button.
+	 * 
+	 * @param checked_value
+	 */
+	public final void setChecked(final boolean checked) {
+		if (checked != isChecked()) {
+			onClick(toggle_button);
+		}
+	}
+
+
+	/**
+	 * Register a callback to be invoked when the checked_value state of this
+	 * button changes.
+	 * 
+	 * @param checked_listener
+	 */
+	public final void setOnCheckedChangeListener(final OnCheckedChangeListener listener) {
+		checked_listener = listener;
+	}
+
+
+	/**
+	 * Change the checked_value state of the view to the inverse of its current
+	 * state
+	 */
+	public final void toggle() {
+		setChecked(!isChecked());
 	}
 }

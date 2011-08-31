@@ -22,6 +22,34 @@ public final class R {
         public static final int view_transition_out_right=0x7f04000a;
     }
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonStyleSlidingHorizontalButton=0x7f010000;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int checked=0x7f010003;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int textOff=0x7f010002;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int textOn=0x7f010001;
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
@@ -31,26 +59,136 @@ public final class R {
         public static final int toggle_button_center_9=0x7f020004;
     }
     public static final class id {
-        public static final int button=0x7f060007;
-        public static final int button_off=0x7f06000c;
-        public static final int button_on=0x7f06000a;
-        public static final int container=0x7f060006;
-        public static final int container_off=0x7f06000b;
-        public static final int container_on=0x7f060009;
-        public static final int nextButton=0x7f060001;
-        public static final int previousButton=0x7f060000;
-        public static final int slidingHorizontalButton1=0x7f060003;
-        public static final int text_off=0x7f060005;
-        public static final int text_on=0x7f060004;
-        public static final int viewFlipper=0x7f060002;
-        public static final int view_flipper=0x7f060008;
+        public static final int SlidingHorizontalButton_Label_TextOff=0x7f070001;
+        public static final int SlidingHorizontalButton_Label_TextOn=0x7f070000;
+        public static final int SlidingHorizontalButton_Toggle_Button=0x7f070003;
+        public static final int SlidingHorizontalButton_Toggle_Container=0x7f070002;
+        public static final int nextButton=0x7f070005;
+        public static final int previousButton=0x7f070004;
+        public static final int viewFlipper=0x7f070006;
     }
     public static final class layout {
         public static final int main=0x7f030000;
         public static final int toggle_button=0x7f030001;
     }
     public static final class string {
-        public static final int app_name=0x7f050001;
-        public static final int hello=0x7f050000;
+        /**  
+ 
+ Style for the "On" SlidingHorizontalButton Label 
+ 
+ 
+         */
+        public static final int SlidingHorizontalButton_Label_TextOff=0x7f060003;
+        /**  
+ 
+ Style for the "On" SlidingHorizontalButton Label 
+ 
+ 
+         */
+        public static final int SlidingHorizontalButton_Label_TextOn=0x7f060002;
+        public static final int app_name=0x7f060001;
+        public static final int hello=0x7f060000;
     }
+    public static final class style {
+        public static final int SlidingHorizontalButton=0x7f050000;
+        /**  
+ 
+ Base Style for the SlidingHorizontalButton TextView Label 
+ 
+ 
+         */
+        public static final int SlidingHorizontalButton_Label=0x7f050002;
+        /**  
+ 
+ Base Style for the SlidingHorizontalButton LinearLayouts 
+ 
+ 
+         */
+        public static final int SlidingHorizontalButton_LinearLayout=0x7f050003;
+        public static final int Theme=0x7f050001;
+    }
+    public static final class styleable {
+        /** Attributes that can be used with a SlidingHorizontalButton.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SlidingHorizontalButton_checked com.mercury_wireless.android.demo.sliding_button:checked}</code></td><td></td></tr>
+           <tr><td><code>{@link #SlidingHorizontalButton_textOff com.mercury_wireless.android.demo.sliding_button:textOff}</code></td><td></td></tr>
+           <tr><td><code>{@link #SlidingHorizontalButton_textOn com.mercury_wireless.android.demo.sliding_button:textOn}</code></td><td></td></tr>
+           </table>
+           @see #SlidingHorizontalButton_checked
+           @see #SlidingHorizontalButton_textOff
+           @see #SlidingHorizontalButton_textOn
+         */
+        public static final int[] SlidingHorizontalButton = {
+            0x7f010001, 0x7f010002, 0x7f010003
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.mercury_wireless.android.demo.sliding_button.R.attr#checked}
+          attribute's value can be found in the {@link #SlidingHorizontalButton} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:checked
+        */
+        public static final int SlidingHorizontalButton_checked = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.mercury_wireless.android.demo.sliding_button.R.attr#textOff}
+          attribute's value can be found in the {@link #SlidingHorizontalButton} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:textOff
+        */
+        public static final int SlidingHorizontalButton_textOff = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.mercury_wireless.android.demo.sliding_button.R.attr#textOn}
+          attribute's value can be found in the {@link #SlidingHorizontalButton} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:textOn
+        */
+        public static final int SlidingHorizontalButton_textOn = 0;
+        /** Attributes that can be used with a Theme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #Theme_buttonStyleSlidingHorizontalButton com.mercury_wireless.android.demo.sliding_button:buttonStyleSlidingHorizontalButton}</code></td><td></td></tr>
+           </table>
+           @see #Theme_buttonStyleSlidingHorizontalButton
+         */
+        public static final int[] Theme = {
+            0x7f010000
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.mercury_wireless.android.demo.sliding_button.R.attr#buttonStyleSlidingHorizontalButton}
+          attribute's value can be found in the {@link #Theme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonStyleSlidingHorizontalButton
+        */
+        public static final int Theme_buttonStyleSlidingHorizontalButton = 0;
+    };
 }

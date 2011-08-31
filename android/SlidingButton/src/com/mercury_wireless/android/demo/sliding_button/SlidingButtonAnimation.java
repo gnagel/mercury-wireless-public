@@ -32,15 +32,15 @@ public class SlidingButtonAnimation extends Animation {
 	}
 
 
-	private final float	mFromDegrees;
-
-	private final float	mToDegrees;
+	private Camera		mCamera;
 
 	private final float	mCenterX;
 
 	private final float	mCenterY;
 
-	private Camera		mCamera;
+	private final float	mFromDegrees;
+
+	private final float	mToDegrees;
 
 
 	public SlidingButtonAnimation(final float fromDegrees, final float toDegrees, final float centerX,

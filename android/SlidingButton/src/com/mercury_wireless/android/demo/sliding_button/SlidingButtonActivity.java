@@ -4,60 +4,49 @@ package com.mercury_wireless.android.demo.sliding_button;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ViewFlipper;
 
 
-public class SlidingButtonActivity extends Activity {
-	// @Override
-	// public void onCreate(final Bundle savedInstanceState) {
-	// super.onCreate(savedInstanceState);
-	// setContentView(R.layout.main);
-	//
-	// final ViewFlipper viewFlipper = (ViewFlipper)
-	// findViewById(R.id.viewFlipper);
-	//
-	// final Button nextButton = (Button) findViewById(R.id.nextButton);
-	// nextButton.setOnClickListener(new View.OnClickListener() {
-	// @Override
-	// public void onClick(final View v) {
-	// viewFlipper.showNext();
-	// }
-	// });
-	//
-	// final Button previousButton = (Button) findViewById(R.id.previousButton);
-	// previousButton.setOnClickListener(new View.OnClickListener() {
-	// @Override
-	// public void onClick(final View v) {
-	// viewFlipper.showPrevious();
-	// }
-	// });
-	// }
+/**
+ * Simple demo activity of the {@link SlidingHorizontalButton} compared to a
+ * {@link ViewFlipper}.
+ * 
+ * @author G Nagel
+ */
+public class SlidingButtonActivity extends Activity implements View.OnClickListener {
+	private ViewFlipper	viewFlipper;
+
+
+	@Override
+	public void onClick(final View v) {
+		final int id = v.getId();
+
+		switch (id) {
+			case R.id.nextButton:
+				viewFlipper.setInAnimation(SlidingButtonActivity.this, R.anim.view_transition_in_left);
+				viewFlipper.setOutAnimation(SlidingButtonActivity.this, R.anim.view_transition_out_left);
+				viewFlipper.showNext();
+				break;
+
+			case R.id.previousButton:
+				viewFlipper.setInAnimation(SlidingButtonActivity.this, R.anim.view_transition_in_right);
+				viewFlipper.setOutAnimation(SlidingButtonActivity.this, R.anim.view_transition_out_right);
+				viewFlipper.showPrevious();
+				break;
+		}
+	}
+
 
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		final ViewFlipper viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
-		final Button nextButton = (Button) findViewById(R.id.nextButton);
-		nextButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				viewFlipper.setInAnimation(SlidingButtonActivity.this, R.anim.view_transition_in_left);
-				viewFlipper.setOutAnimation(SlidingButtonActivity.this, R.anim.view_transition_out_left);
-				viewFlipper.showNext();
-			}
-		});
+		// Find the view flipper
+		viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
 
-		final Button previousButton = (Button) findViewById(R.id.previousButton);
-		previousButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				viewFlipper.setInAnimation(SlidingButtonActivity.this, R.anim.view_transition_in_right);
-				viewFlipper.setOutAnimation(SlidingButtonActivity.this, R.anim.view_transition_out_right);
-				viewFlipper.showPrevious();
-			}
-		});
+		// Find the buttons
+		findViewById(R.id.nextButton).setOnClickListener(this);
+		findViewById(R.id.previousButton).setOnClickListener(this);
 	}
 }

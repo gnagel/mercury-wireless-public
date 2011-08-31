@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<declare-styleable
+		name="Theme">
+		<attr
+			name="buttonStyleSlidingHorizontalButton"
+			format="reference" />
+	</declare-styleable>
+	<declare-styleable
+		name="SlidingHorizontalButton">
+		<attr
+			name="textOn"
+			format="string" />
+		<attr
+			name="textOff"
+			format="string" />
+		<attr
+			name="checked"
+			format="boolean" />
+	</declare-styleable>
+	<style
+		name="SlidingHorizontalButton">
+	</style>
+	<style
+		name="Theme"
+		parent="@android:style/Theme">
+		<item
+			name="buttonStyleSlidingHorizontalButton">@style/SlidingHorizontalButton</item>
+	</style>
+</resources>

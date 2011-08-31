@@ -5,79 +5,26 @@
 	android:layout_height="wrap_content"
 	android:background="@drawable/toggle_button_background_9">
 	<LinearLayout
-		android:layout_height="fill_parent"
-		android:layout_gravity="center"
-		android:layout_width="fill_parent"
-		android:weightSum="2">
+		style="@style/SlidingHorizontalButton.LinearLayout">
 		<TextView
-			android:gravity="center"
-			android:layout_width="0dip"
-			android:text="Text On"
-			android:id="@+id/text_on"
-			android:layout_height="fill_parent"
-			android:layout_weight="1"
-			android:layout_gravity="center"></TextView>
+			style="@style/SlidingHorizontalButton.Label"
+			android:id="@id/SlidingHorizontalButton.Label.TextOn"
+			android:text="@string/SlidingHorizontalButton.Label.TextOn" />
 		<TextView
-			android:gravity="center"
-			android:layout_width="0dip"
-			android:text="Text Off"
-			android:id="@+id/text_off"
-			android:layout_height="fill_parent"
-			android:layout_weight="1"
-			android:layout_gravity="center"></TextView>
+			style="@style/SlidingHorizontalButton.Label"
+			android:id="@id/SlidingHorizontalButton.Label.TextOff"
+			android:text="@string/SlidingHorizontalButton.Label.TextOff" />
 	</LinearLayout>
 	<LinearLayout
-		android:id="@+id/container"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:gravity="right"
-		android:layout_gravity="center"
-		android:weightSum="2">
-		<ImageView
+		style="@style/SlidingHorizontalButton.LinearLayout"
+		android:id="@id/SlidingHorizontalButton.Toggle.Container">
+		<ImageButton
 			android:layout_height="fill_parent"
-			android:src="@drawable/toggle_button_center_9"
+			android:background="@drawable/toggle_button_center_9"
 			android:layout_weight="1"
 			android:scaleType="fitXY"
 			android:layout_width="0dip"
-			android:id="@+id/button"
+			android:id="@id/SlidingHorizontalButton.Toggle.Button"
 			android:layout_gravity="center" />
 	</LinearLayout>
-	<ViewFlipper
-		android:id="@+id/view_flipper"
-		android:orientation="vertical"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:visibility="gone">
-		<LinearLayout
-			android:id="@+id/container_on"
-			android:layout_width="fill_parent"
-			android:weightSum="2"
-			android:gravity="right"
-			android:layout_height="fill_parent"
-			android:layout_gravity="center">
-			<ImageView
-				android:id="@+id/button_on"
-				android:layout_width="0dip"
-				android:layout_weight="1"
-				android:layout_height="fill_parent"
-				android:layout_gravity="center"
-				android:src="@drawable/toggle_button_center_9"
-				android:scaleType="fitXY" />
-		</LinearLayout>
-		<LinearLayout
-			android:id="@+id/container_off"
-			android:weightSum="2"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:layout_gravity="center">
-			<ImageView
-				android:layout_height="fill_parent"
-				android:src="@drawable/toggle_button_center_9"
-				android:layout_weight="1"
-				android:layout_width="0dip"
-				android:id="@+id/button_off"
-				android:layout_gravity="center"
-				android:scaleType="fitXY"></ImageView>
-		</LinearLayout>
-	</ViewFlipper>
 </FrameLayout>

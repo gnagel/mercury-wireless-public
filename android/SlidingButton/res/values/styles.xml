@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- -->
+	<!-- -->
+	<!-- Base Style for the SlidingHorizontalButton TextView Label -->
+	<!-- -->
+	<!-- -->
+	<style
+		name="SlidingHorizontalButton.Label"
+		parent="@android:style/TextAppearance.SearchResult.Subtitle">
+		<item
+			name="android:textColor">@android:color/white</item>
+		<item
+			name="android:gravity">center</item>
+		<item
+			name="android:layout_gravity">center</item>
+		<item
+			name="android:layout_height">fill_parent</item>
+		<item
+			name="android:layout_width">0dip</item>
+		<item
+			name="android:layout_weight">1</item>
+	</style>
+	<!-- -->
+	<!-- -->
+	<!-- Style for the "On" SlidingHorizontalButton Label -->
+	<!-- -->
+	<!-- -->
+	<string
+		name="SlidingHorizontalButton.Label.TextOn">On</string>
+	<item
+		name="SlidingHorizontalButton.Label.TextOn"
+		type="id" />
+	<!-- -->
+	<!-- -->
+	<!-- Style for the "On" SlidingHorizontalButton Label -->
+	<!-- -->
+	<!-- -->
+	<string
+		name="SlidingHorizontalButton.Label.TextOff">Off</string>
+	<item
+		name="SlidingHorizontalButton.Label.TextOff"
+		type="id" />
+	<!-- -->
+	<!-- -->
+	<!-- Base Style for the SlidingHorizontalButton LinearLayouts -->
+	<!-- -->
+	<!-- -->
+	<style
+		name="SlidingHorizontalButton.LinearLayout">
+		<item
+			name="android:layout_height">fill_parent</item>
+		<item
+			name="android:layout_gravity">center</item>
+		<item
+			name="android:layout_width">fill_parent</item>
+		<item
+			name="android:weightSum">2</item>
+	</style>
+	<item
+		name="SlidingHorizontalButton.Toggle.Container"
+		type="id" />
+	<item
+		name="SlidingHorizontalButton.Toggle.Button"
+		type="id" />
+</resources>
