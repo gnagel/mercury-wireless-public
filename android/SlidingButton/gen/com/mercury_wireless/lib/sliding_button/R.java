@@ -68,7 +68,7 @@ containing a value of this type.
         public static final int viewFlipper=0x7f070006;
     }
     public static final class layout {
-        public static final int sliding_button_main=0x7f030000;
+        public static final int sliding_button_demo=0x7f030000;
         public static final int sliding_button_toggle_button=0x7f030001;
     }
     public static final class string {
@@ -103,6 +103,7 @@ containing a value of this type.
  
          */
         public static final int SlidingHorizontalButton_LinearLayout=0x7f050003;
+        public static final int SlidingHorizontalButton_Toggle_Container=0x7f050004;
         public static final int Theme=0x7f050001;
     }
     public static final class styleable {

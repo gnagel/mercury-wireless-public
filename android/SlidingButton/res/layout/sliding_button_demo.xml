@@ -39,8 +39,5 @@
 	</ViewFlipper>
 	<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
 		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		app:textOn="On"
-		app:textOff="Off"
-		app:checked="false" />
+		android:layout_width="match_parent" />
 </LinearLayout>

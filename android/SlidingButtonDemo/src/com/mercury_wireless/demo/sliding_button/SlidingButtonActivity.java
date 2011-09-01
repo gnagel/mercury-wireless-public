@@ -1,4 +1,4 @@
-package com.mercury_wireless.lib.sliding_button;
+package com.mercury_wireless.demo.sliding_button;
 
 
 import android.app.Activity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ViewFlipper;
 
 
-import com.mercury_wireless.lib.sliding_button.R;
+import com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton;
 
 
 /**
@@ -43,7 +43,7 @@ public class SlidingButtonActivity extends Activity implements View.OnClickListe
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.sliding_button_main);
+		setContentView(R.layout.main);
 
 		// Find the view flipper
 		viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
