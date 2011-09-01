@@ -4,8 +4,7 @@
 	package="com.mercury_wireless.lib.sliding_button"
 	android:versionCode="1"
 	android:versionName="1.0">
-	<uses-sdk
-		android:minSdkVersion="8" />
+	<uses-sdk android:minSdkVersion="7"/>
 	<application
 		android:icon="@drawable/sliding_button_icon"
 		android:label="SlidingHorizontalButton">

@@ -63,9 +63,9 @@ containing a value of this type.
         public static final int SlidingHorizontalButton_Label_TextOn=0x7f070000;
         public static final int SlidingHorizontalButton_Toggle_Button=0x7f070003;
         public static final int SlidingHorizontalButton_Toggle_Container=0x7f070002;
-        public static final int nextButton=0x7f070005;
-        public static final int previousButton=0x7f070004;
-        public static final int viewFlipper=0x7f070006;
+        public static final int sliding_button_demo_nextButton=0x7f070005;
+        public static final int sliding_button_demo_previousButton=0x7f070004;
+        public static final int sliding_button_demo_viewFlipper=0x7f070006;
     }
     public static final class layout {
         public static final int sliding_button_demo=0x7f030000;

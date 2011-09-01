@@ -10,18 +10,22 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 		<Button
-			android:id="@+id/previousButton"
+			android:id="@+id/sliding_button_demo_previousButton"
 			android:text="Previous"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
 		<Button
-			android:id="@+id/nextButton"
+			android:id="@+id/sliding_button_demo_nextButton"
 			android:text="Next"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
 	</LinearLayout>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="10dip"
+		android:orientation="vertical"></LinearLayout>
 	<ViewFlipper
-		android:id="@+id/viewFlipper"
+		android:id="@+id/sliding_button_demo_viewFlipper"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 		<TextView
@@ -39,5 +43,41 @@
 	</ViewFlipper>
 	<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
 		android:layout_height="wrap_content"
-		android:layout_width="match_parent" />
+		android:layout_width="fill_parent" />
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="10dip"
+		android:orientation="vertical"></LinearLayout>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton>
+		<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton>
+		<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:orientation="vertical"
+		android:layout_height="10dip"></LinearLayout>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"></com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton>
+		<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right|top"></com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton>
+		<com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></com.mercury_wireless.lib.sliding_button.SlidingHorizontalButton>
+	</LinearLayout>
 </LinearLayout>
