@@ -1,5 +1,9 @@
-/gen
 /bin
-/junit-reports
+/gen
+/beenverified_lib*
 .DS_Store
+/SlidingButton_src
+/SlidingButton_src/*
 *~
+/SlidingButton_src
+/libs/*/
