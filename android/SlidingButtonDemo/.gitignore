@@ -1,5 +1,6 @@
-/gen
-/bin
-/junit-reports
-.DS_Store
 *~
+.DS_Store
+/bin
+/gen
+/junit-reports
+build

@@ -1,9 +1,9 @@
-/bin
-/gen
-/beenverified_lib*
+*~
 .DS_Store
 /SlidingButton_src
 /SlidingButton_src/*
-*~
-/SlidingButton_src
+/beenverified_lib*
+/bin
+/gen
 /libs/*/
+build
